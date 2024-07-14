@@ -11,3 +11,8 @@ export interface ImageData {
   big: string;
   description: string;
 }
+
+export interface FetchPhotosResponse {
+  total_pages: number;
+  results: Photo[];
+}

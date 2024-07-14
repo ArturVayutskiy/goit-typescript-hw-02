@@ -7,7 +7,7 @@ import css from "./App.module.css";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import { Oval } from "react-loader-spinner";
-import { Photo, ImageData } from "./App.types";
+import { Photo, ImageData, FetchPhotosResponse } from "./App.types";
 
 const App: React.FC = () => {
   const [photos, setPhotos] = useState<Photo[]>([]);
@@ -27,7 +27,7 @@ const App: React.FC = () => {
       try {
         setIsLoading(true);
         setError(null);
-        const data = await fetchPhotos(query, page);
+        const data: FetchPhotosResponse = await fetchPhotos(query, page);
         if (data.total_pages === 0) {
           setError("Nothing was found. Please try another word.");
         } else {
